@@ -1,4 +1,5 @@
 from django.db import models
+
 # from django.db.models import Model
 from django.contrib.auth.models import User
 
@@ -8,4 +9,8 @@ class Post(models.Model):
     content = models.TextField()
     published = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
-    modifie = models.DateTimeField(auto_now=True)
+    modified = models.DateTimeField(auto_now=True)
+    sponsored = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.id} {self.title}"

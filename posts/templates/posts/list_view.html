@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<h2> Biblioteka </h2>
+<br>
+<br>
+
+    {% for post in posts_list %}
+        <div>
+            <small>
+            <tr>Data utworzenia: {{post.created }}</tr>
+            <tr>Data modyfikacji: {{post.modified | date:"D d M Y"}}</tr>
+                {% if post.sponsored %}
+                    (sponsorowany)
+                {% endif %}
+                <br>
+            </small>
+        </div>
+    {% endfor %}
+    <div>
+        <p>Niedlugo uruchomimimy pierwsza biblioteke</p>
+    </div>
+
+
+</body>
+</html>
