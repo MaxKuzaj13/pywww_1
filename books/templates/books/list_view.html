@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<h2> Biblioteka </h2>
+<br>
+<br>
+
+    {% for book in books_list %}
+        <div>
+            <small>
+            <tr>Data utworzenia: {{book.created }}</tr>
+            <tr>Data modyfikacji: {{book.modified | date:"D d M Y"}}</tr>
+                {% if book.available %}
+                    (Na polce)
+                {% else %}
+                    Wypożyczona
+                {% endif %}
+                <br>
+            </small>
+        </div>
+    {% endfor %}
+    <div>
+        <p>Niedlugo uruchomimimy pierwsza biblioteke</p>
+    </div>
+
+
+</body>
+</html>

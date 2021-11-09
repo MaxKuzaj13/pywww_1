@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('publication_year', models.IntegerField()),
                 ('author', models.CharField(max_length=255)),
                 ('created', models.DateTimeField(auto_now_add=True)),
-                ('modifie', models.DateTimeField(auto_now=True)),
+                ('modified', models.DateTimeField(auto_now=True)),
             ],
         ),
     ]
