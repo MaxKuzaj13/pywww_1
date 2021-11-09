@@ -1,32 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Books</title>
-</head>
-<body>
-<h2> Biblioteka </h2>
-<br>
-<br>
+{% extends "books/base.html" %}
 
-    {% for book in books_list %}
-        <div>
-            <small>
-            <tr>Data utworzenia: {{book.created }}</tr>
-            <tr>Data modyfikacji: {{book.modified | date:"D d M Y"}}</tr>
-                {% if book.available %}
-                    (Na polce)
-                {% else %}
-                    Wypożyczona
-                {% endif %}
-                <br>
-            </small>
-        </div>
-    {% endfor %}
+{% block content %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tytuł</th>
+                <th>Autor</th>
+                <th>Opis</th>
+                <th>Data utworzenia</th>
+                <th>Data modyfikacji</th>
+            </tr>
+        </thead>
+            {% for book in books_list %}
+            <tr>
+
+                <th>{{book.title}}</th>
+                <th>{{book.author}}</th>
+                <th>{{book.description}} </th>
+                <th>{{book.created }}</th>
+                <th>{{book.modified | date:"D d M Y"}}</th>
+                <th>{% if book.available %}
+                        (Na polce)
+                    {% else %}
+                        Wypożyczona
+                    {% endif %}
+                </th>
+
+            </tr>
+           {%endfor%}
+        </tbody>
+
+    </table>
+
     <div>
+        <br>
+        <br>
         <p>Niedlugo uruchomimimy pierwsza biblioteke</p>
     </div>
-
-
-</body>
-</html>
+{% endblock content %}

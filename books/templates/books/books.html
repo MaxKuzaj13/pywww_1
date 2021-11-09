@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Books</title>
-</head>
-<body>
-<h1> Ksiazki </h1>
-<br>
-<br>
+{% extends "books/base.html" %}
 
+{% block content %}
     {% for book in books%}
+
         <td>
             <tr>{{book.author}}</tr>
             <tr>{{book.title}}</tr>
         </td>
     {% endfor %}
 
+{% endblock content %}
 
-</body>
-</html>
