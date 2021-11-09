@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'posts.apps.PostsConfig',
     'books.apps.BooksConfig',
-    'main.apps.MainConfig'
+    'main.apps.MainConfig',
+    'shell_plus',
 ]
 
 MIDDLEWARE = [
