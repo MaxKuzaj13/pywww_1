@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Books</title>
-</head>
-<body>
-<h2> Biblioteka </h2>
-<br>
-<br>
+{% extends "templates/base.html" %}
+{% block content %}
 
     {% for post in posts_list %}
         <div>
@@ -25,6 +17,4 @@
         <p>Niedlugo uruchomimimy pierwsza biblioteke</p>
     </div>
 
-
-</body>
-</html>
+{% endblock content %}
