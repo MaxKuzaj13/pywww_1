@@ -9,21 +9,18 @@ from .models import Post
 def posts(request):
     return HttpResponse('posts')
 
+
 def post_list(request):
     return HttpResponse('posts')
 
 
-class ListView(ListView):
+class ListPostView(ListView):
     model = Post
     template_name = 'posts/list_view.html'
     context_object_name = 'posts_list'
 
-class DetailView(DetailView):
+
+class DetailPostsView(DetailView):
     model = Post
     template_name = 'posts/detail_view.html'
-    context_object_name = 'detail_view'
-
-
-
-
-
+    context_object_name = 'detail_view_post'

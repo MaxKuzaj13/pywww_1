@@ -1,11 +1,11 @@
-from .views import posts, ListView
+from .views import posts, ListPostView, DetailPostsView
 from django.urls import path, include
-from . import views
 
+app_name = "posts"
 
 urlpatterns = [
-    path('', posts),
-    path('list/', views.ListView.as_view(), name='list_view'),
-    path('<slug:pk>/', views.DetailView.as_view(), name='detail_view'),
+    #path('', posts),
+    path('list/', ListPostView.as_view(), name='list_view_post'),
+    path('<slug:pk>/', DetailPostsView.as_view(), name='detail_post_view'),
 ]
 

@@ -7,8 +7,8 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 
 def hello_world(request):
-    templates = loader.get_template('main/about.html')
-    return HttpResponse(templates.render())
+    template_name = 'main/main.html'
+    return render(request, template_name)
 
 class HW(TemplateView):
     template_name = 'main/about.html'

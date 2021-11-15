@@ -21,4 +21,4 @@ class ListView(ListView):
 class DetailView(DetailView):
     model = BookModel
     template_name = 'books/detail_view.html'
-    context_object_name = 'detail_view'
+    context_object_name = 'detail_view_books'

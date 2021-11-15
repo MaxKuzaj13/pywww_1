@@ -1,9 +1,14 @@
 {% extends "templates/base.html" %}
+
 {% block content %}
 
     {% for post in posts_list %}
         <div>
             <small>
+            <tr>id: {{post.id}}</tr>
+            <tr>
+            <a href="{% url 'posts:detail_post_view' post.id %}"> Tytół: {{post.title}}</a>
+            </tr>
             <tr>Data utworzenia: {{post.created }}</tr>
             <tr>Data modyfikacji: {{post.modified | date:"D d M Y"}}</tr>
                 {% if post.sponsored %}
