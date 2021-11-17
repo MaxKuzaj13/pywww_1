@@ -14,6 +14,7 @@ _pycache__/
 *$py.class
 
 *__pycache__*
+pywww/__pycache__/*
 # Distribution / packaging
 .Python
 build/
