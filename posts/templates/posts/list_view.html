@@ -5,46 +5,52 @@
 
 {% endblock%}
 
-<!--        <table class="table">-->
-
-<!--         <thead>-->
-<!--            <tr>-->
-<!--              <th scope="col">#</th>-->
-<!--              <th scope="col">First</th>-->
-<!--              <th scope="col">Last</th>-->
-<!--              <th scope="col">Handle</th>-->
-<!--            </tr>-->
-<!--          </thead>-->
 {% block content %}
+        <table class="table">
 
-    {% for post in posts_list %}
-
-<!--          <tbody>-->
-<!--            <tr>-->
-<!--              <th scope="row">1</th>-->
-<!--              <td>Mark</td>-->
-<!--              <td>Otto</td>-->
-<!--              <td>@mdo</td>-->
-<!--            </tr>-->
-
-
-<!--          </tbody>-->
-<!--        </table>-->
-        <div>
-            <small>
-            <tr>id: {{post.id}}</tr>
+         <thead>
             <tr>
-            <a href="{% url 'posts:detail_post_view' post.id %}"> Tytół: {{post.title}}</a>
+                <th scope="col">#</th>
+                <th scope="col">Tytół</th>
+                <th scope="col">Stworzono</th>
+                <th scope="col">zmodyfikowano</th>
+                <th scope="col">sponsorowany</th>
             </tr>
-            <tr>Data utworzenia: {{post.created }}</tr>
-            <tr>Data modyfikacji: {{post.modified | date:"D d M Y"}}</tr>
-                {% if post.sponsored %}
+          </thead>
+
+ {% for post in posts_list %}
+          <tbody>
+            <tr>
+              <th scope="row">{{post.id}}</th>
+              <td><a href="{% url 'posts:detail_post_view' post.id %}">{{post.title}}</a></td>
+              <td>{{post.created }}</td>
+              <td> {{post.modified | date:"D d M Y"}}</td>
+                <td> {% if post.sponsored %}
                     (sponsorowany)
-                {% endif %}
-                <br>
-            </small>
-        </div>
+                    {% endif %}
+                </td>
+
+<!--        <div>-->
+<!--            <small>-->
+<!--            <tr>id: {{post.id}}</tr>-->
+<!--            <tr>-->
+<!--            <a href="{% url 'posts:detail_post_view' post.id %}"> Tytół: {{post.title}}</a>-->
+<!--            </tr>-->
+<!--            <tr>Data utworzenia: {{post.created }}</tr>-->
+<!--            <tr>Data modyfikacji: {{post.modified | date:"D d M Y"}}</tr>-->
+<!--                {% if post.sponsored %}-->
+<!--                    (sponsorowany)-->
+<!--                {% endif %}-->
+<!--                <br>-->
+<!--            </small>-->
+<!--        </div>-->
+
     {% endfor %}
+                            </tr>
+
+
+          </tbody>
+        </table>
     <div>
         <p>Niedlugo uruchomimimy pierwsza biblioteke</p>
     </div>
