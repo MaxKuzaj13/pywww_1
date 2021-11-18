@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
     <!--   STATIC CSS  -->
+
+
     <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">
 
     <title>{% block title %} {% endblock %}</title>
@@ -25,7 +27,7 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-<!--            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><a href="{% static '/img/logo.png' %}"></a></svg>-->
+            <img src="{% static '/img/logo.png' %}" width="40" height="32">
           </a>
 
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -58,18 +60,26 @@
     <br>
     <br>
     <footer>
-      <p>Author: Max Rogowski</p>
-      {% load static %}
-      <p><a href="https://github.com/MaxKuzaj13/">github</a></p>
-  <!--    <p><a href="/about/">about</a></p>-->
-<!--      <img src="/static/img/logo.png">-->
-      <img src="{% static 'img/logo.png' %}" alt="logo">
+    <div class="container">
+
+            <br>
+
+              <p>Author: Max Rogowski</p>
+                <br>
+              <p><a href="https://github.com/MaxKuzaj13/">github</a></p>
+          <!--    <p><a href="/about/">about</a></p>-->
+<!--              <img src="/static/img/logo.png">-->
+              <br>
+              <img src="{% static 'img/logo.png' %}" alt="logo">
+
+    </div>
+
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
 
 
   </body>
