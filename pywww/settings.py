@@ -131,6 +131,8 @@ STATIC_URL = '/static/'
 STATIC_DIRS =[
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# change to not have same name
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
