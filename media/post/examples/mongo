@@ -1,0 +1,80 @@
+{"$and": [{"platformProperties.deliveryID": 27430}, {"platformProperties.layerID": 773778}]}
+
+
+{"$and": [{"platformProperties.deliveryID": 34250}, {"platformProperties.layerID": 823220}]}
+
+
+{"$and": [{"platformProperties.deliveryID": 33845}, {"platformProperties.layerID": 822221}]}
+
+27430   773778
+
+
+{"$and": [{"platformProperties.deliveryID": 27430}, {"platformProperties.layerID": 773778}]}
+
+
+
+
+
+for k in list_temp:
+    if len(re.findall(u'[\u002F-\u007f]', k)) > 0:
+        if len(re.findall(u'[\u0600-\u06ff]', k)) > 0:
+            print(k)
+
+
+
+            773778 27430
+
+            27465   773838
+
+No adress
+{"$and": [{"platformProperties.deliveryID": 27436}, {"platformProperties.layerID": 773796}]}
+
+
+
+
+{"$and": [{"platformProperties.deliveryID": 27465}, {"platformProperties.layerID": 773838}]}
+
+
+27603   778472
+
+{"$and": [{"platformProperties.deliveryID": 27603}, {"platformProperties.layerID": 778472}]}
+
+37768   849165
+
+{"$and": [{"platformProperties.deliveryID": 37768}, {"platformProperties.layerID": 849165}]}
+
+
+37886   849377
+Software
+
+28998 790543
+{"$and": [{"platformProperties.deliveryID": 28998}, {"platformProperties.layerID": 790543}]}
+
+
+I'm changed professional career GIS-> programing+GIS
+mlp_extraction_scrapy_dev | lead added.
+mlp_extraction_scrapy_dev | paragraph added.
+mlp_extraction_scrapy_dev | lead added.
+mlp_extraction_scrapy_dev | paragraph added.
+mlp_extraction_scrapy_dev | Error saving Leads.
+mlp_extraction_scrapy_dev | Error saving Leads.
+
+
+{"$and": [{"platformProperties.deliveryID": 37886}, {"platformProperties.layerID": 849377}]}
+
+
+
+
+/Users/rogowskm/Python_project/_pywww/1/pywww/static/img/logo.png
+/Users/rogowskm/Python_project/_pywww/1/pywww/static/img/logo.png
+
+
+36310   838266
+
+{"$and": [{"platformProperties.deliveryID": 36310}, {"platformProperties.layerID": 838266}]}
+
+
+
+http://old.dopravniinfo.cz/seznam.aspx
+
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8

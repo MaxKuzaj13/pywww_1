@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'django_extensions',
     'import_export',
+    'crispy_forms',
 
     'posts.apps.PostsConfig',
     'books.apps.BooksConfig',
@@ -142,9 +143,15 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SHELL_PLUS_PRINT_SQL= True
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

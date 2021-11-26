@@ -29,6 +29,11 @@ class Post(models.Model):
     sponsored = models.BooleanField(default=False)
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     tags = models.ManyToManyField('tags.Tag', related_name="post")
+    example_field = models.FileField(upload_to='post/examples', blank=True, null=True)
+
+    image_field = models.ImageField(upload_to='post/images/%Y/%m/%d/', blank=True, null=True, width_field='image_width')
+    image_width = models.IntegerField(blank=True, null=True, editable=False)
+
 
     def __str__(self):
         return f"{self.id} {self.title}"

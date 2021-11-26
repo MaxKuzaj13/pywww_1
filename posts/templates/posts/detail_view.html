@@ -1,4 +1,5 @@
 {% extends "templates/base.html" %}
+{% load static %}
 
 {% block content %}
         <div>
@@ -7,6 +8,11 @@
             <tr>{{detail_view_post.modified}}</tr>
             </small>
         </div>
+<!--    {%if detail_view_post.image_field %}-->
+        <img src="/media/{{ detail_view_post.image_field }}" alt="Nie weszło" width="500" height="600">
+<!--             <img src="{% static 'img/logo.png' %}" alt="logo">-->
+
+<!--    {% endif %}-->
     <div>
         <p>Niedlugo uruchomimimy pierwsza biblioteke</p>
     </div>
