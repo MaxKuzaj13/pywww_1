@@ -17,6 +17,7 @@ def post_list(request):
 
 
 class ListPostView(ListView):
+    paginate_by = 10
     model = Post
     template_name = 'posts/list_view.html'
     context_object_name = 'posts_list'

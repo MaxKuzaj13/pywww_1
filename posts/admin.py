@@ -17,5 +17,6 @@ class PostAdmin(ExportMixin, admin.ModelAdmin):
     list_display = ['id', 'title', 'created', 'modified', 'sponsored', 'published']
     list_filter = ['published', 'sponsored']
     search_fields = ['title']
+    filter_horizontal = ['tags']
     resource_class = PostResource
 
