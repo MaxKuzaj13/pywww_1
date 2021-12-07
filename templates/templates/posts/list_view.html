@@ -1,0 +1,101 @@
+{% extends "templates/base.html" %}
+{% load static %}
+
+{% block style %}
+
+{% endblock%}
+
+{% block content %}
+        <table class="table">
+
+         <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tytół</th>
+                <th scope="col">Stworzono</th>
+                <th scope="col">zmodyfikowano</th>
+                <th scope="col">sponsorowany</th>
+            </tr>
+          </thead>
+
+ {% for post in posts_list %}
+          <tbody>
+            <tr>
+              <th scope="row">{{post.id}}</th>
+              <td><a href="{% url 'posts:detail_post_view' post.id %}">{{post.title}}</a></td>
+              <td>{{post.created }}</td>
+              <td> {{post.modified | date:"D d M Y"}}</td>
+                <td> {% if post.sponsored %}
+                    (sponsorowany)
+                    {% endif %}
+                </td>
+
+<!--        <div>-->
+<!--            <small>-->
+<!--            <tr>id: {{post.id}}</tr>-->
+<!--            <tr>-->
+<!--            <a href="{% url 'posts:detail_post_view' post.id %}"> Tytół: {{post.title}}</a>-->
+<!--            </tr>-->
+<!--            <tr>Data utworzenia: {{post.created }}</tr>-->
+<!--            <tr>Data modyfikacji: {{post.modified | date:"D d M Y"}}</tr>-->
+<!--                {% if post.sponsored %}-->
+<!--                    (sponsorowany)-->
+<!--                {% endif %}-->
+<!--                <br>-->
+<!--            </small>-->
+<!--        </div>-->
+
+    {% endfor %}
+                            </tr>
+
+
+          </tbody>
+        </table>
+    
+    <div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <!-- <span class="step-links"> -->
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">&laquo; first</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        </li>
+                    {% endif %}
+
+                    {% for i in page_obj.paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">
+                                    {{i}}
+                                <span class="sr-only"> * </span>
+                                </span>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link"  href="?page={{ page_obj.next_page_number }}">next</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link"  href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        </li>
+                    {% endif %}
+                <!-- </span> -->
+
+
+<!-- 
+                <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span> -->
+            </ul>
+        </nav>
+    </div>
+{% endblock content %}
