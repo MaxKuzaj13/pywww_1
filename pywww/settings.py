@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'tags.apps.TagsConfig',
     'login_register.apps.LoginregisterConfig',
+    'galleries.apps.GalleriesConfig',
     'shell_plus',
 
 
