@@ -23,7 +23,7 @@ urlpatterns = [
     path('posts/', include('posts.urls')),
     path('books/', include('books.urls')),
     path('', include('main.urls')),
-    path('', include('loginregister.urls')),
-    path('accounts', include('django.contrib.auth.urls')),
+    path('', include('login_register.urls')),
+    #path('accounts', include('django.contrib.auth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -44,12 +44,13 @@ INSTALLED_APPS = [
     'django_extensions',
     'import_export',
     'crispy_forms',
+    'sorl.thumbnail',
 
     'posts.apps.PostsConfig',
     'books.apps.BooksConfig',
     'main.apps.MainConfig',
     'tags.apps.TagsConfig',
-    'loginregister.apps.LoginregisterConfig',
+    'login_register.apps.LoginregisterConfig',
     'shell_plus',
 
 
@@ -156,3 +157,6 @@ SHELL_PLUS_PRINT_SQL= True
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
