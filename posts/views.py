@@ -22,8 +22,13 @@ class ListPostView(ListView):
     template_name = 'posts/list_view.html'
     context_object_name = 'posts_list'
 
+
+    def get_paginate_by(self, queryset):
+        return self.request.GET.get("paginate_by", self.paginate_by)
+
     def get_queryset(self):
         return Post.objects.filter(published=True).order_by('-pk')
+
 
 
 class DetailPostsView(DetailView):

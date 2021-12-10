@@ -1,10 +1,10 @@
 from .views import ListGalleryView
 from django.urls import path, include
 
-app_name = "posts"
+app_name = "galleries"
 
 urlpatterns = [
     #path('', posts),
-    path('list/', ListGalleryView.as_view(), name='list_view_gallery'),
+    path('list/', ListGalleryView.as_view(), name='gallery_list'),
 ]
 

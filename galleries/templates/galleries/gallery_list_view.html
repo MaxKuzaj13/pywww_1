@@ -6,6 +6,20 @@
 {% endblock%}
 
 {% block content %}
+
+<div>
+    <p>Select number how manny item on page</p>
+        <form action="" method="get">
+            <select name="paginate_by" onchange='this.form.submit()'>
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+        </form>
+</div>
+
+<br>
         <table class="table">
 
          <thead>
@@ -13,37 +27,24 @@
                 <th scope="col">#</th>
                 <th scope="col">Tytół</th>
                 <th scope="col">Stworzono</th>
-                <th scope="col">zmodyfikowano</th>
-                <th scope="col">sponsorowany</th>
+                <th scope="col">Zmodyfikowano</th>
+                <th scope="col">Opis</th>
             </tr>
           </thead>
 
- {% for post in posts_list %}
+ {% for post in gallery_list %}
+        {% if post.status == 'published' %}
           <tbody>
             <tr>
               <th scope="row">{{post.id}}</th>
               <td><a href="{% url 'posts:detail_post_view' post.id %}">{{post.title}}</a></td>
               <td>{{post.created }}</td>
               <td> {{post.modified | date:"D d M Y"}}</td>
-                <td> {% if post.sponsored %}
-                    (sponsorowany)
+                <td> {% if post.description %}
+                    {{post.description}}
                     {% endif %}
                 </td>
-
-<!--        <div>-->
-<!--            <small>-->
-<!--            <tr>id: {{post.id}}</tr>-->
-<!--            <tr>-->
-<!--            <a href="{% url 'posts:detail_post_view' post.id %}"> Tytół: {{post.title}}</a>-->
-<!--            </tr>-->
-<!--            <tr>Data utworzenia: {{post.created }}</tr>-->
-<!--            <tr>Data modyfikacji: {{post.modified | date:"D d M Y"}}</tr>-->
-<!--                {% if post.sponsored %}-->
-<!--                    (sponsorowany)-->
-<!--                {% endif %}-->
-<!--                <br>-->
-<!--            </small>-->
-<!--        </div>-->
+        {% endif %}
 
     {% endfor %}
                             </tr>
@@ -55,7 +56,6 @@
     <div>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <!-- <span class="step-links"> -->
                     {% if page_obj.has_previous %}
                         <li class="page-item">
                             <a class="page-link" href="?page=1">&laquo; first</a>
@@ -88,13 +88,6 @@
                             <a class="page-link"  href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
                         </li>
                     {% endif %}
-                <!-- </span> -->
-
-
-<!-- 
-                <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                </span> -->
             </ul>
         </nav>
     </div>

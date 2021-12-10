@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView, CreateView, ListView, DetailView
-from .models import Gallery
+from django.views.generic.list import MultipleObjectMixin
 
+from .models import Gallery
 
 
 class ListGalleryView(ListView):
@@ -8,6 +9,9 @@ class ListGalleryView(ListView):
     model = Gallery
     template_name = 'galleries/gallery_list_view.html'
     context_object_name = 'gallery_list'
+
+    def get_paginate_by(self, queryset):
+        return self.request.GET.get("paginate_by", self.paginate_by)
 
     def get_queryset(self):
         return Gallery.objects.order_by('-pk')

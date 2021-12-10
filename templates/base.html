@@ -30,9 +30,10 @@
             <img src="{% static '/img/logo.png' %}" width="40" height="32">
           </a>
 
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <ul class="nav col-6 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="{% url 'main:hello_world'  %}" class="nav-link px-2 text-secondary">Home</a></li>
-            <li><a href="{% url 'posts:list_view_post'  %}" class="nav-link px-2 text-secondary">Lista Postów</a></li>
+            <li><a href="{% url 'posts:list_view_post'  %}" class="nav-link px-2 text-secondary">Post list</a></li>
+            <li><a href="/gallery/list/" class="nav-link px-2 text-secondary">Galeria</a></li>
             <li><a href="/about/" class="nav-link px-2 text-secondary">About</a></li>
           </ul>
         

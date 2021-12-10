@@ -6,6 +6,17 @@
 {% endblock%}
 
 {% block content %}
+<div>
+    <p>Select number how manny item on page</p>
+        <form action="" method="get">
+            <select name="paginate_by" onchange='this.form.submit()'>
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+        </form>
+</div>
         <table class="table">
 
          <thead>
