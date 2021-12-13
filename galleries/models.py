@@ -9,6 +9,7 @@ def get_rand_text(n):
     letters = string.ascii_letters
     return ''.join(random.choice(letters) for i in range(n))
 
+
 class Gallery(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, max_length=200, blank=True, null=True)

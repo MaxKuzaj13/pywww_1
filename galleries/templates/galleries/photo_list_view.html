@@ -29,11 +29,11 @@
                 <th scope="col">Stworzono</th>
                 <th scope="col">Zmodyfikowano</th>
                 <th scope="col">Opis</th>
-                <th scope="col"> ?</th>
+                <th scope="col">Galeria nazwa</th>
             </tr>
           </thead>
 
- {% for post in gallery_list %}
+ {% for post in photo_list %}
 
         {% if post.status == 'published' %}
           <tbody>
@@ -47,8 +47,12 @@
                     {% endif %}
                 </td>
 <!--                <td>{{post.slug}}</td>-->
-                <td>
-                    nie działa
+                <td>{{post.gallery.title}}
+                    {% for el in post.gallery.all %}
+
+                        {{el.id}}
+
+                    {% endfor %}
                 </td>
 
 <!--                {{post.slug.gallery.title}}-->
