@@ -101,7 +101,6 @@ WSGI_APPLICATION = 'pywww.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-ec2-54-89-105-122.compute-1.amazonaws.com
 
 DATABASES = {
 
