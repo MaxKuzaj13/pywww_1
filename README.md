@@ -16,6 +16,7 @@ git push heroku gallery
 nano Procfile  
 nano runtime.txt    
 heroku ps:scale web=1 
+heroku config:set DISABLE_COLLECTSTATIC=1
 heroku run manage.py createsuperuser
 heroku logs --tail
 heroku open  
