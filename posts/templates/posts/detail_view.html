@@ -8,11 +8,13 @@
                 <tr>{{detail_view_post.id}}</tr><br>
                 <tr>{{detail_view_post.created}}</tr><br>
                 <tr>{{detail_view_post.modified}}</tr><br>
+                <tr>{{ detail_view_post.image_field }}</tr>
             </small>
         </div>
 <!--    {%if detail_view_post.image_field %}-->
         <img src="/media/{{ detail_view_post.image_field }}" alt="Nie weszło" width="500" height="600">
 <!--             <img src="{% static 'img/logo.png' %}" alt="logo">-->
+
 
 <!--    {% endif %}-->
     <div>
