@@ -29,7 +29,7 @@ except:
     SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['calm-spire-73455.herokuapp.com', '127.0.0.1']
 
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'import_export',
     'crispy_forms',
     'sorl.thumbnail',
-    'storages',
+
 
     'posts.apps.PostsConfig',
     'books.apps.BooksConfig',
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'login_register.apps.LoginregisterConfig',
     'galleries.apps.GalleriesConfig',
     'shell_plus',
+    'storages',
 
 
 ]
@@ -155,20 +156,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# STATIC_DIRS =[
-#     os.path.join(BASE_DIR, 'static'),
-# ]
-#
-# # change to not have same name
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static')
-# ]
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -197,9 +185,25 @@ AWS_DEFAULT_ACL = None
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
-MEDIA_FILES_LOCATION = 'media'
+MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 # # Tell the staticfiles app to use S3Boto3 storage when writing the collected static files (when
 # # you run `collectstatic`).
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+STATIC_URL = '/static/'
+STATIC_ROOT = STATICFILES_STORAGE #os.path.join(BASE_DIR, 'static')
+
+# STATIC_DIRS =[
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+#
+# # change to not have same name
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static')
+# ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
