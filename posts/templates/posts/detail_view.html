@@ -12,7 +12,7 @@
             </small>
         </div>
 <!--    {%if detail_view_post.image_field %}-->
-        <img src="MEDIA_URL/{{ detail_view_post.image_field }}" alt="Nie weszło" width="500" height="600">
+        <img src="{{ media_url }}{{ detail_view_post.image_field }}" alt="Nie weszło" width="500" height="600">
 <!--             <img src="{% static 'img/logo.png' %}" alt="logo">-->
 
 
