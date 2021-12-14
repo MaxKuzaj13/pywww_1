@@ -11,12 +11,12 @@
                 <tr>{{ detail_view_post.image_field }}</tr>
             </small>
         </div>
-<!--    {%if detail_view_post.image_field %}-->
-        <img src="{%  media %} {{ detail_view_post.image_field }}" alt="Nie weszło" width="500" height="600">
+    {%if detail_view_post.image_field %}
+        <img src="{% get_media_prefix %}{{ detail_view_post.image_field }}" alt="Nie weszło" width="300" height="300">
 <!--             <img src="{% static 'img/logo.png' %}" alt="logo">-->
 
 
-<!--    {% endif %}-->
+    {% endif %}
     <div>
         <p>Niedlugo uruchomimimy pierwsza biblioteke</p>
     </div>

@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, ListView, DetailView
 from .models import Post
 from .forms import PostForm
+from django.conf import settings
 
 
 def posts(request):

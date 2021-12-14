@@ -29,7 +29,13 @@ except:
     SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
+try:
+    DEBUG = os.environ.get('DEBUG')
+    print('read')
+    print(DEBUG)
+except:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['calm-spire-73455.herokuapp.com', '127.0.0.1']
 
@@ -205,8 +211,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #     os.path.join(BASE_DIR, 'static')
 # ]
 PUBLIC_MEDIA_LOCATION = 'media'
+
 if DEBUG:
-    MEDIA_URL = 'media'
+    #MEDIA_URL = 'media/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_ROOT = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+
 else:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_ROOT = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+    print('huj')
