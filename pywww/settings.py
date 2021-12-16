@@ -12,12 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from dotenv import load_dotenv
 from pathlib import Path
 import os
+
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -32,13 +32,12 @@ except:
 
 try:
     DEBUG = os.environ.get('DEBUG')
-    print('read')
-    print(DEBUG)
+    if DEBUG is None:
+        DEBUG = False
 except:
     DEBUG = False
 
 ALLOWED_HOSTS = ['calm-spire-73455.herokuapp.com', '127.0.0.1']
-
 
 # Application definition
 
@@ -55,7 +54,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'sorl.thumbnail',
 
-
     'posts.apps.PostsConfig',
     'books.apps.BooksConfig',
     'main.apps.MainConfig',
@@ -64,8 +62,6 @@ INSTALLED_APPS = [
     'galleries.apps.GalleriesConfig',
     'shell_plus',
     'storages',
-
-
 ]
 
 MIDDLEWARE = [
@@ -99,7 +95,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pywww.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -125,7 +120,6 @@ DATABASES = {
 
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -144,7 +138,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -158,10 +151,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
 
 
 # Default primary key field type
@@ -169,20 +160,24 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SHELL_PLUS_PRINT_SQL= True
-
+SHELL_PLUS_PRINT_SQL = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-
-
 AWS_STORAGE_BUCKET_NAME = 'django-pyww-max'
 AWS_S3_REGION_NAME = 'eu-west-1'  # e.g. us-east-2
-AWS_ACCESS_KEY_ID = 'AKIAV6M2FZRGQDZHTTRB'
-AWS_SECRET_ACCESS_KEY = 'Q0WqqC0JOga7tIAiUDyX4WvBFSeQAYChjTMKLfdL'
+try:
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+except:
+    AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
+try:
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+except:
+    AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
+
 
 # Tell django-storages the domain to use to refer to static files.
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
@@ -213,7 +208,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 PUBLIC_MEDIA_LOCATION = 'media'
 
 if DEBUG:
-    #MEDIA_URL = 'media/'
+    # MEDIA_URL = 'media/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_ROOT = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
