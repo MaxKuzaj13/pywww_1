@@ -4,7 +4,6 @@ import random
 from django.db import models
 
 
-
 def get_rand_text(n):
     letters = string.ascii_letters
     return ''.join(random.choice(letters) for i in range(n))
@@ -71,3 +70,7 @@ class Photo(models.Model):
                 self.slug = slug
                 print(slug)
         return super().save(*args, *kwargs)
+
+    @property
+    def is_published(self):
+        return self.status == 'publish'

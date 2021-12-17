@@ -1,5 +1,6 @@
 {% extends "templates/base.html" %}
 {% load static %}
+{% load thumbnail %}
 
 {% block style %}
 
@@ -7,96 +8,27 @@
 
 {% block content %}
 
-<div>
-    <p>Select number how manny item on page</p>
-        <form action="" method="get">
-            <select name="paginate_by" onchange='this.form.submit()'>
-                <option>10</option>
-                <option>20</option>
-                <option>50</option>
-                <option>100</option>
-            </select>
-        </form>
+<div class="row">
+    {% for gallery in gallery_list %}
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h 100">
+                {% thumbnail gallery.photos.first.image "300x300" crop="center" as im %}
+                    <img class="card-img-top" src="{{ im.url }}" alt="problem">
+                {% endthumbnail %}
+                <div class="card-body">
+                    <h4 class="card-title text--center">{{gallery.title}}</h4>
+                </div>
+                <div class="card-footer text-center">
+                       <a href="{% url 'galleries:gallery_details' gallery.id %}" class="btn-primary">Poka</a>
+                </div>
+
+
+            </div>
+
+        </div>
+    {% endfor%}
+    {% if galery.status == 'published' %}
+    huj
+    {% endif %}
 </div>
-
-<br>
-        <table class="table">
-
-         <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Tytół</th>
-                <th scope="col">Stworzono</th>
-                <th scope="col">Zmodyfikowano</th>
-                <th scope="col">Opis</th>
-                <th scope="col"> ?</th>
-            </tr>
-          </thead>
-
- {% for post in gallery_list %}
-
-        {% if post.status == 'published' %}
-          <tbody>
-            <tr>
-                <th scope="row">{{post.id}}</th>
-                <td><a href="{% url 'posts:detail_post_view' post.id %}">{{post.title}}</a></td>
-                <td>{{post.created }}</td>
-                <td> {{post.modified | date:"D d M Y"}}</td>
-                <td> {% if post.description %}
-                    {{post.description}}
-                    {% endif %}
-                </td>
-<!--                <td>{{post.slug}}</td>-->
-                <td>
-                    nie działa
-                </td>
-
-<!--                {{post.slug.gallery.title}}-->
-        {% endif %}
-
-    {% endfor %}
-                            </tr>
-
-
-          </tbody>
-        </table>
-    
-    <div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                    {% if page_obj.has_previous %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page=1">&laquo; first</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-                        </li>
-                    {% endif %}
-
-                    {% for i in page_obj.paginator.page_range %}
-                        {% if page_obj.number == i %}
-                            <li class="page-item active" aria-current="page">
-                                <span class="page-link">
-                                    {{i}}
-                                <span class="sr-only"> * </span>
-                                </span>
-                            </li>
-                        {% else %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-
-                    {% if page_obj.has_next %}
-                        <li class="page-item">
-                            <a class="page-link"  href="?page={{ page_obj.next_page_number }}">next</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link"  href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                        </li>
-                    {% endif %}
-            </ul>
-        </nav>
-    </div>
 {% endblock content %}

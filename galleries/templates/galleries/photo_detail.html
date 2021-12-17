@@ -1,0 +1,61 @@
+{% extends "templates/base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{% block content %}
+
+
+{{gallery.id}}
+
+        <div>
+            <small>
+                <tr>{{gallery.title}}</tr><br>
+                <tr>{{gallery.created}}</tr><br>
+                <tr>{{gallery.modified}}</tr><br>
+<!--                <tr>{{details.image_field }}</tr>-->
+            </small>
+            <div class="container">
+                <div class="row">
+                    <div class="column">
+                        <h1 class="card-title text--center">{{gallery.title}}</h1>
+                        <section class="photo_gallery">
+                            {% for gallery_img in gallery.photos.all %}
+
+                                {% thumbnail gallery_img.image "300x300" crop="center" as im %}
+                                    <a href="{{gallery_image.image.url}}">
+                                        <img src="{{im.url}}" alt="'nie wyszlo" title="">
+                                    </a>
+                                {% endthumbnail %}
+                            {% endfor %}
+
+                        </section>
+
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card h 100">
+    <!--                    <img class="card-img-top" src="{{ im.url }}" alt="problem">-->
+    <!--                -->
+                    <div class="card-body">
+
+                    </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            </div>
+
+<!--        </div>-->
+<!--    {%if details.image_field %}-->
+<!--        <img src="{% get_media_prefix %}{{ details.image_field }}" alt="Nie weszło" width="300" height="300">-->
+<!--            <div class="card-footer text-conter">-->
+<!--                <a href="{% url 'galleries:details' gallery.id %}" class="btn btn-primary">Poka</a>-->
+
+<!--            </div>-->
+
+<!--    {% endif %}-->
+
+
+{% endblock content %}
