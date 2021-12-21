@@ -31,7 +31,6 @@ class ListPostView(ListView):
         return Post.objects.filter(published=True).order_by('-pk')
 
 
-
 class DetailPostsView(DetailView):
     model = Post
     template_name = 'posts/detail_view.html'

@@ -23,7 +23,6 @@ class Gallery(models.Model):
 
     def save(self, *args, **kwargs):
         if self._state.adding and not self.slug:
-            print(self.title)
             slug = slugify(self.title)
             slugs = self.__class__.objects.values_list('slug', flat=True)
             if slugs:
@@ -33,7 +32,8 @@ class Gallery(models.Model):
                     else:
                         break
                 self.slug = slug
-                print(slug)
+        if self.status == 'hide':
+            self.photos.update(status='hide')
         return super().save(*args, *kwargs)
 
 
@@ -56,9 +56,9 @@ class Photo(models.Model):
     def __str__(self):
         return f"{self.title}"
 
+
     def save(self, *args, **kwargs):
         if self._state.adding and not self.slug:
-            print(self.title)
             slug = slugify(self.title)
             slugs = self.__class__.objects.values_list('slug', flat=True)
             if slugs:
@@ -68,9 +68,8 @@ class Photo(models.Model):
                     else:
                         break
                 self.slug = slug
-                print(slug)
         return super().save(*args, *kwargs)
 
     @property
     def is_published(self):
-        return self.status == 'publish'
+        return self.status == 'published'

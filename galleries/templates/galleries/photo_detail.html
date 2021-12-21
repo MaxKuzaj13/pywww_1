@@ -2,60 +2,106 @@
 {% load static %}
 {% load thumbnail %}
 
+{% block style %}
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.7.0/simple-lightbox.css" 
+    integrity="sha512-8WAX0xL/cHZ38RXoX2gtuqkAwmDVAzGwoFVmHvn46IDHGWOjTHx0vcl9OapNrfOzpFtql0SNkv+0y0b5Fm8ZkA==" 
+    crossorigin="anonymous" />
+{% endblock style %}
+
 {% block content %}
+<div>
+    <p>Select number how manny item on page</p>
+        <form action="" method="get">
+            <select name="paginate_by" onchange='this.form.submit()'>
+                <option>1</option>
+                <option>2</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+        </form>
+</div>
 
 
 {{gallery.id}}
 
         <div>
-            <small>
-                <tr>{{gallery.title}}</tr><br>
-                <tr>{{gallery.created}}</tr><br>
-                <tr>{{gallery.modified}}</tr><br>
-<!--                <tr>{{details.image_field }}</tr>-->
-            </small>
             <div class="container">
                 <div class="row">
                     <div class="column">
-                        <h1 class="card-title text--center">{{gallery.title}}</h1>
+                        <h1>{{gallery.title}}</h1>
                         <section class="photo_gallery">
                             {% for gallery_img in gallery.photos.all %}
-
-                                {% thumbnail gallery_img.image "300x300" crop="center" as im %}
-                                    <a href="{{gallery_image.image.url}}">
-                                        <img src="{{im.url}}" alt="'nie wyszlo" title="">
-                                    </a>
-                                {% endthumbnail %}
+                                {% if gallery_img.is_published %}
+                                    {% thumbnail gallery_img.image "x300" as im %}
+                                        <a href="{{ gallery_img.image.url }}">
+                                            <img src="{{im.url}}" alt="'nie wyszlo" title=""/>
+                                        </a>
+                                    {% endthumbnail %}
+                                {% endif %}
                             {% endfor %}
 
                         </section>
 
 
-                <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h 100">
-    <!--                    <img class="card-img-top" src="{{ im.url }}" alt="problem">-->
-    <!--                -->
-                    <div class="card-body">
-
-                    </div>
-
-                    </div>
-                </div>
 
             </div>
 
 
             </div>
-
-<!--        </div>-->
-<!--    {%if details.image_field %}-->
-<!--        <img src="{% get_media_prefix %}{{ details.image_field }}" alt="Nie weszło" width="300" height="300">-->
-<!--            <div class="card-footer text-conter">-->
-<!--                <a href="{% url 'galleries:details' gallery.id %}" class="btn btn-primary">Poka</a>-->
-
-<!--            </div>-->
-
-<!--    {% endif %}-->
-
 
 {% endblock content %}
+{% block nav %}
+<div class="col-lg-12 center">
+    <div>
+       <nav aria-label="Page navigation example">
+           <ul class="pagination">
+                   {% if page_obj.has_previous %}
+                       <li class="page-item">
+                           <a class="page-link" href="?page=1">&laquo; first</a>
+                       </li>
+                       <li class="page-item">
+                           <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                       </li>
+                   {% endif %}
+
+                   {% for i in page_obj.paginator.page_range %}
+                       {% if page_obj.number == i %}
+                           <li class="page-item active" aria-current="page">
+                               <span class="page-link">
+                                   {{i}}
+                               <span class="sr-only"> * </span>
+                               </span>
+                           </li>
+                       {% else %}
+                           <li class="page-item">
+                               <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                           </li>
+                       {% endif %}
+                   {% endfor %}
+
+                   {% if page_obj.has_next %}
+                       <li class="page-item">
+                           <a class="page-link"  href="?page={{ page_obj.next_page_number }}">next</a>
+                       </li>
+                       <li class="page-item">
+                           <a class="page-link"  href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                       </li>
+                   {% endif %}
+           </ul>
+       </nav>
+   </div>
+</div>
+</div>
+{% endblock nav %}
+
+
+{% block aditional_scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.7.0/simple-lightbox.min.js" 
+    integrity="sha512-ZajFBgnksNp8Rj+AbmYe8ueOu45HiSjtf3QpqnRbHlq719m6VK0FkbYIqQ8wEnlVuJ1i9pC+z6Z9ewmDnUTMCg==" 
+    crossorigin="anonymous"></script>
+    <script>
+        var gallery = new SimpleLightbox('.photo_gallery a'); 
+    </script>
+
+{% endblock aditional_scripts %}
