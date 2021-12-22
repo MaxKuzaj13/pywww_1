@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'books.apps.BooksConfig',
     'main.apps.MainConfig',
     'tags.apps.TagsConfig',
+    'examples_app.apps.ExamplesAppConfig',
     'login_register.apps.LoginregisterConfig',
     'galleries.apps.GalleriesConfig',
     'shell_plus',

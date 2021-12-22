@@ -5,7 +5,7 @@ from django.views.generic import TemplateView, CreateView, ListView, DetailView
 from django.views.generic.list import MultipleObjectMixin
 from django.core.paginator import Paginator
 from .forms import PhotoForm, GalleryForm
-
+from django.db.models import Avg, Min, Max, Count
 from .models import Gallery, Photo
 
 
@@ -17,10 +17,11 @@ class ListGalleryView(ListView):
     context_object_name = 'gallery_list'
 
     def get_queryset(self):
-        # return Gallery.objects.order_by('-pk')
-        galleries = Gallery.objects.filter(status='published')
+        galleries = Gallery.objects.filter(status='published').annotate(p_count=Count('photos')).filter(p_count__gt=0)
         # count sprawdza wszsytkie i robi wiele zapytan
-        galleries = [g for g in galleries if g.photos.count() > 0]
+        # galleries = Gallery.objects.filter(status='published')
+        # galleries = [g for g in galleries if g.photos.count() > 0]
+
         return galleries
 
     def get_paginate_by(self, queryset):

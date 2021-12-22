@@ -1,7 +1,12 @@
+from django.contrib.admin.widgets import AdminFileWidget
+from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from slugify import slugify
 import string
 import random
 from django.db import models
+from sorl.thumbnail import get_thumbnail
+from django.contrib import admin
 
 
 def get_rand_text(n):
@@ -73,3 +78,6 @@ class Photo(models.Model):
     @property
     def is_published(self):
         return self.status == 'published'
+
+
+
