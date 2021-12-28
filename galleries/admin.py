@@ -25,15 +25,6 @@ class AdminImageWidget(AdminFileWidget):
         return u''.join(output)
 
 
-class PhotoInline(admin.TabularInline):
-    model = Photo
-    fields = ['title' 'slug', 'short_description', 'image', 'status']
-    readonly_fields = ['slug']
-    extra = 1
-    formfield_overrides = {models.ImageField: {'widget': AdminImageWidget}}
-
-
-
 class GalleryResource(resources.ModelResource):
     class Meta:
         model = Gallery
@@ -61,3 +52,9 @@ class PostAdmin(ExportMixin, admin.ModelAdmin):
     # filter_horizontal = ['tags']
     resource_class = PhotoResource
     formfield_overrides = {models.ImageField: {'widget': AdminImageWidget}}
+
+
+
+# admin.site.site_header = "PyWWW Admin"
+# admin.site.site_title = "PyWWW Admin"
+admin.site.index_title = "Witaj w Portalu PyWWW"

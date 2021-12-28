@@ -23,6 +23,10 @@ class Gallery(models.Model):
     STATUS_TYPES_CHOICES = (('new', 'New'), ('hide', 'Hide'), ('published', 'Published'))
     status = models.CharField(max_length=20, choices=STATUS_TYPES_CHOICES, default='new')
 
+    class Meta:
+        verbose_name = "Galeria"
+        verbose_name_plural = "Galerje"
+
     def __str__(self):
         return f"{self.title}"
 
@@ -57,6 +61,10 @@ class Photo(models.Model):
     source = models.CharField(max_length=255, blank=True, null=True)
     STATUS_TYPES_CHOICES = (('new', 'New'), ('hide', 'Hide'), ('published', 'Published'))
     status = models.CharField(max_length=20, choices=STATUS_TYPES_CHOICES, default='new')
+
+    class Meta:
+        verbose_name = "Zdjęcie"
+        verbose_name_plural = "Zdjęcia"
 
     def __str__(self):
         return f"{self.title}"
