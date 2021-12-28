@@ -21,3 +21,4 @@ django-storages==1.12.3
 boto3==1.18.3
 factory_boy==3.2.1
 faker-vehicle==0.2.0
+django-grappelli==2.15.3

@@ -45,6 +45,11 @@ class Gallery(models.Model):
             self.photos.update(status='hide')
         return super().save(*args, *kwargs)
 
+    # changed to
+    @property
+    def photo_count(self):
+        return self.photos.count()
+
 
 def upload_to(instance, filename):
     return f'galleries/{instance.gallery.slug}/{filename}'

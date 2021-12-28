@@ -32,12 +32,25 @@ class GalleryResource(resources.ModelResource):
 # admin.site.register(Post)
 
 @admin.register(Gallery)
-class PostAdmin(ExportMixin, admin.ModelAdmin):
-    list_display = ['id', 'title', 'created', 'modified']
+class GalleryAdmin(ExportMixin, admin.ModelAdmin):
+    list_display = ['id', 'title', 'created', 'modified', 'photo_count']
     # list_filter = ['published', 'sponsored']
     search_fields = ['title']
     # filter_horizontal = ['tags']
     resource_class = GalleryResource
+
+    fieldsets = (
+        ('', {
+            'fields': ('title', ),
+        }),
+        ('Opis',{
+            'fields': ('description',),
+            'description': 'Napisz pare słów o tej galeri'
+        }),
+        ('Status', {
+            'fields': ('status',),
+        }),
+    )
 
 
 class PhotoResource(resources.ModelResource):
@@ -45,7 +58,7 @@ class PhotoResource(resources.ModelResource):
         model = Photo
 
 @admin.register(Photo)
-class PostAdmin(ExportMixin, admin.ModelAdmin):
+class PhotoAdmin(ExportMixin, admin.ModelAdmin):
     list_display = ['id', 'title', 'created', 'modified', 'image']
     # list_filter = ['published', 'sponsored']
     search_fields = ['title']
