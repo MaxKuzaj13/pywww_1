@@ -3,8 +3,8 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<title xmlns="http://www.w3.org/1999/html">Create form</title>
-    <h2>Create form</h2>
+<title xmlns="http://www.w3.org/1999/html">Create observation for user {{user}}</title>
+    <h2>Create observation for user {{user}}</h2>
     <form id="gallery_form" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy}}
