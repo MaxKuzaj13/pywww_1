@@ -80,10 +80,7 @@ class CreatePhotoView(CreateView):
 
     def get_object(self, queryset=None):
         gallery = get_object_or_404(Photo, pk=self.kwargs['gallery_id'])
-        print(gallery)
         return gallery
-
-
 
 
 class CreateGalleryView(CreateView):
