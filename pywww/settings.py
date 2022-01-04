@@ -28,6 +28,11 @@ try:
 except:
     SECRET_KEY = SECRET_KEY
 
+try:
+    ISDOCKER=os.environ.get('ISDOCKER')
+except:
+    ISDOCKER=False
+
 # SECURITY WARNING: don't run with debug turned on in production!
 
 try:
@@ -37,7 +42,7 @@ try:
 except:
     DEBUG = False
 
-ALLOWED_HOSTS = ['calm-spire-73455.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['calm-spire-73455.herokuapp.com', '127.0.0.1', '172.23.0.2']
 
 # Application definition
 
@@ -107,20 +112,37 @@ WSGI_APPLICATION = 'pywww.wsgi.application'
 #     }
 # }
 
-DATABASES = {
+if ISDOCKER:
+    DATABASES = {
 
-    'default': {
+        'default': {
 
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd36drq4d9d7aa8',
-        'USER': 'jeijrtzbetcitg',
-        'PASSWORD': '015e6b6698f6b2ba6f49a1ac4bea716f39ef05cc1cba9fd44c09623a00fba0bb',
-        'HOST': 'ec2-54-89-105-122.compute-1.amazonaws.com',
-        'PORT': '5432',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ.get('POSTGRES_NAME'),
+            'USER': os.environ.get('POSTGRES_USER'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+            'HOST': 'db',
+            'PORT': '5432',
+
+        }
 
     }
+else:
+    DATABASES = {
 
-}
+        'default': {
+
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'd36drq4d9d7aa8',
+            'USER': 'jeijrtzbetcitg',
+            'PASSWORD': '015e6b6698f6b2ba6f49a1ac4bea716f39ef05cc1cba9fd44c09623a00fba0bb',
+            'HOST': 'ec2-54-89-105-122.compute-1.amazonaws.com',
+            'PORT': '5432',
+
+        }
+
+    }
+print(f"Name current used db {DATABASES['default']['NAME']}")
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
