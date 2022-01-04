@@ -114,17 +114,17 @@ WSGI_APPLICATION = 'pywww.wsgi.application'
 print(ISDOCKER)
 
 DATABASES_DOCKER = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'postgres',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'postgres',
-    #     'HOST': 'db',
-    #     'PORT': '5432',
-    # },
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': '5432',
+    },
 }
 
-DATABASES = {
+DATABASES_AZURE = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd36drq4d9d7aa8',
@@ -134,6 +134,12 @@ DATABASES = {
         'PORT': '5432',
                 },
             }
+
+if ISDOCKER == "True":
+    DATABASES = DATABASES_DOCKER
+else:
+    DATABASES = DATABASES_AZURE
+
 
 
 
