@@ -111,38 +111,31 @@ WSGI_APPLICATION = 'pywww.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+print(ISDOCKER)
 
-if ISDOCKER:
-    DATABASES = {
+DATABASES_DOCKER = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'postgres',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'postgres',
+    #     'HOST': 'db',
+    #     'PORT': '5432',
+    # },
+}
 
-        'default': {
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd36drq4d9d7aa8',
+        'USER': 'jeijrtzbetcitg',
+        'PASSWORD': '015e6b6698f6b2ba6f49a1ac4bea716f39ef05cc1cba9fd44c09623a00fba0bb',
+        'HOST': 'ec2-54-89-105-122.compute-1.amazonaws.com',
+        'PORT': '5432',
+                },
+            }
 
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ.get('POSTGRES_NAME'),
-            'USER': os.environ.get('POSTGRES_USER'),
-            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-            'HOST': 'db',
-            'PORT': '5432',
 
-        }
-
-    }
-else:
-    DATABASES = {
-
-        'default': {
-
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'd36drq4d9d7aa8',
-            'USER': 'jeijrtzbetcitg',
-            'PASSWORD': '015e6b6698f6b2ba6f49a1ac4bea716f39ef05cc1cba9fd44c09623a00fba0bb',
-            'HOST': 'ec2-54-89-105-122.compute-1.amazonaws.com',
-            'PORT': '5432',
-
-        }
-
-    }
-print(f"Name current used db {DATABASES['default']['NAME']}")
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
